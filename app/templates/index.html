@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Password Generator{% endblock %}
+{% block content %}
+
+<div class="border border-3 h-100 w-50 p-3 my-5 mx-auto">                         
+    <h1 class="text-center">Password Generator</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+        {% for message in messages %}
+        <div>{{ message }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+
+    <form action="/process" method="post">
+        <div class="mb-3">
+            <label for="letters">How many letters?</label>
+            <input type="number" name="nr_letters" class="form-control" placeholder="Enter the number">
+        </div>
+        <div class="mb-3">
+            <label for="numbers">How many numbers?</label>
+            <input type="number" name="nr_numbers" class="form-control" placeholder="Enter the number">
+        </div>
+        <div class="mb-3">
+            <label for="symbols">How many symbols?</label>
+            <input type="number" name="nr_symbols" class="form-control" placeholder="Enter the number">
+        </div>
+        <button>Generate</button>
+    </form>
+    
+</div>
+    
+{% endblock %}
